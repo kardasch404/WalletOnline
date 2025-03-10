@@ -25,4 +25,6 @@ Route::post('test_data', [TestController::class, 'test_data'])->name('api.test_d
 
 Route::post('register', [UserAuthController::class, 'register']);
 Route::post('login',[UserAuthController::class, 'login']);
+Route::post('logout',[UserAuthController::class,'logout'])
+  ->middleware('auth:sanctum');
 

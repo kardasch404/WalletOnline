@@ -23,8 +23,6 @@ class UserAuthController extends Controller
         return response()->json(['message' => 'user createed']);
     }
 
-
-
     public function login(Request $request)
     {
         try {
@@ -60,5 +58,14 @@ class UserAuthController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+    public function logout ()
+    {
+        Auth::user()->tokens()->delete();
+        return response()->json([
+            'message'=> 'logged out'
+        ]);
+
     }
 }
