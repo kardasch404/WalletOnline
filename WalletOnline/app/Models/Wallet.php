@@ -11,12 +11,12 @@ class Wallet extends Model
 
     protected $fillable = [
         'argent',
-        'user_id',
-        
+        // 'user_id',
+
     ];
 
-    public function user ()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'wallet_id');
     }
 }

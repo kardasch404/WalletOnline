@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Wallet;
 use Dotenv\Validator;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Http\Request;
@@ -71,4 +72,15 @@ class UserAuthController extends Controller
         ]);
 
     }
+
+    public function getSolde($id)
+    {
+        $user = User::findOrFail($id);
+        $wallet = $user->wallet;
+        // $user->response['wallet_id']->get();
+        return response()->json([
+            'argent' => $wallet->argent,
+        ]);
+    }
+    
 }
