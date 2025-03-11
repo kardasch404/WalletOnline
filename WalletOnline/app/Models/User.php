@@ -22,7 +22,8 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'wallet_id'
     ];
 
     /**
@@ -44,5 +45,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function role ()
+    {
+        return $this->belongsTo(Role::class,'role_id');
+    }
+    
+    public function wallet ()
+    {
+        return $this->hasOne(Wallet::class,'wallet_id');
+    }
+    public function transaction ()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+    
 }
