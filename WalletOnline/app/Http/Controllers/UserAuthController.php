@@ -17,7 +17,10 @@ class UserAuthController extends Controller
     {
         User::create([
             'name' => $request['name'],
+            'lastname' => $request['lastname'],
             'email' => $request['email'],
+            'role_id' => $request['role_id'],
+            'wallet_id' => $request['wallet_id'],
             'password' => Hash::make($request['password']),
         ]);
         return response()->json(['message' => 'user createed']);
