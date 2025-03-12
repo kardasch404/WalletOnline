@@ -29,3 +29,4 @@ Route::post('logout',[UserAuthController::class,'logout'])
   ->middleware('auth:sanctum');
 
 Route::get('getSolde/{id}',[UserAuthController::class, 'getSolde']);
+Route::post('ajouterArgent',[UserAuthController::class, 'ajouterArgent']);
