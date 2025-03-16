@@ -14,7 +14,7 @@ class Transaction extends Model
         'montant',
         'status',
         'date',
-        'wallet_id'
+        // 'wallet_id'
     ];
 
     

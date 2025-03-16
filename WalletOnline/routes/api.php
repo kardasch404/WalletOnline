@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,4 @@ Route::post('logout',[UserAuthController::class,'logout'])
 
 Route::get('getSolde/{id}',[UserAuthController::class, 'getSolde']);
 Route::post('ajouterArgent',[UserAuthController::class, 'ajouterArgent']);
+Route::post('sendArgent',[TransactionController::class, 'sendArgent']);
