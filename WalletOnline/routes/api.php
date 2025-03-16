@@ -17,18 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// =========================-> Test <-===================================== //
+// ======================================================================================== //
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::post('test_data', [TestController::class, 'test_data'])->name('api.test_data');
 
+// =========================-> Auth <-===================================== //
+// ======================================================================================== //
 
 Route::post('register', [UserAuthController::class, 'register']);
 Route::post('login',[UserAuthController::class, 'login']);
 Route::post('logout',[UserAuthController::class,'logout'])
   ->middleware('auth:sanctum');
 
+  // =========================-> UserAuthController <-===================================== //
+// ======================================================================================== //
+
 Route::get('getSolde/{id}',[UserAuthController::class, 'getSolde']);
 Route::post('ajouterArgent',[UserAuthController::class, 'ajouterArgent']);
+
+ // =========================-> TransactionController <-===================================== //
+// ======================================================================================== //
 Route::post('sendArgent',[TransactionController::class, 'sendArgent']);
