@@ -46,7 +46,7 @@ This is a RESTful API for an online wallet that allows users to securely exchang
 | Endpoint                           | Method | Description                   |  Arg                                      |
 |------------------------------------|----------------------------------------|-------------------------------------------| 
 | `/api/sendArgent`                  | POST   | Transfer money between users  |  sender (email), recever (email), montant | 
-| `/api/getDetailsTransaction/{id}`  | GET    | Get Details Transaction       |  id |                                                              
+| `/api/getDetailsTransaction/{id}`  | GET    | Get Details Transaction       |  id                                       |                                                              
 ---
 
 ## Models
