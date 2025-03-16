@@ -12,13 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('wallet_id');
-            $table->foreign('wallet_id')->references('id')->on('users');
-        });
-    }
+{
+    Schema::create('wallets', function (Blueprint $table) {
+        $table->id();
+        $table->float('argent')->default(0);
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -27,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropColumn('wallet_id');
-        });
+        //
     }
 };

@@ -8,23 +8,45 @@ use Dotenv\Validator;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Mockery\Expectation;
 
 class UserAuthController extends Controller
 {
     //
     public function register(Request $request)
     {
-        User::create([
-            'name' => $request['name'],
-            'lastname' => $request['lastname'],
-            'email' => $request['email'],
-            'role_id' => $request['role_id'],
-            'wallet_id' => $request['wallet_id'],
-            'password' => Hash::make($request['password']),
-        ]);
-        return response()->json(['message' => 'user createed']);
+
+        DB::beginTransaction();
+        try {
+
+            $newwallet = Wallet::create([
+                'argent' => $request->has('argent') ? $request['argent'] : 0,
+            ]);
+
+
+            $user = User::create([
+                'name' => $request['name'],
+                'lastname' => $request['lastname'],
+                'email' => $request['email'],
+                'role_id' => $request['role_id'],
+                'wallet_id' => $newwallet->id,
+                'password' => Hash::make($request['password']),
+            ]);
+            DB::commit();
+            return response()->json([
+                'message' => 'user createed',
+                'user' => $user,
+                'wallet' => $newwallet
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'error' => 'erroor' . $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function login(Request $request)
@@ -64,13 +86,12 @@ class UserAuthController extends Controller
         }
     }
 
-    public function logout ()
+    public function logout()
     {
         Auth::user()->tokens()->delete();
         return response()->json([
-            'message'=> 'logged out'
+            'message' => 'logged out'
         ]);
-
     }
 
     public function getSolde($id)
@@ -84,19 +105,17 @@ class UserAuthController extends Controller
 
     public function ajouterArgent(Request $request)
     {
-        
+
         $user = User::where('email', '=', $request->email)->first();
         // return response()->json([
         //     'email' => $user
         // ]);
-        
-        $wallet = $user->wallet ;
+
+        $wallet = $user->wallet;
         $wallet->argent = 5000.00;
-        $wallet->save();      
+        $wallet->save();
         return response()->json([
             'wallet' => $wallet
         ]);
     }
-
-    
 }
