@@ -11,7 +11,7 @@ This is a RESTful API for an online wallet that allows users to securely exchang
 - Secure API with token-based authentication
 
 ## Class Diagram
-![Class Diagram](./WalletOnline/public/UML_class.png)   
+![Class Diagram](./WalletOnline/public/UML class .png)  
 
 ---
 
