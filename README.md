@@ -11,7 +11,7 @@ This is a RESTful API for an online wallet that allows users to securely exchang
 - Secure API with token-based authentication
 
 ## Class Diagram
-![Class Diagram](./WalletOnline/public/UML%20class%20.png)   
+![Class Diagram](./WalletOnline/public/UML_class.png)   
 
 ---
 
@@ -43,9 +43,10 @@ This is a RESTful API for an online wallet that allows users to securely exchang
 ---
 ### Transactions 
 
-| Endpoint           | Method | Description                   |  Arg                                      |
-|--------------------|--------|-------------------------------|-------------------------------------------| 
-| `/api/sendArgent`  | POST   | Transfer money between users  |  sender (email), recever (email), montant |                                                              
+| Endpoint                           | Method | Description                   |  Arg                                      |
+|------------------------------------|----------------------------------------|-------------------------------------------| 
+| `/api/sendArgent`                  | POST   | Transfer money between users  |  sender (email), recever (email), montant | 
+| `/api/getDetailsTransaction/{id}`  | GET    | Get Details Transaction       |  id |                                                              
 ---
 
 ## Models
