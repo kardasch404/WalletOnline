@@ -106,13 +106,17 @@ class UserAuthController extends Controller
     public function ajouterArgent(Request $request)
     {
 
-        $user = User::where('email', '=', $request->email)->first();
-        // return response()->json([
-        //     'email' => $user
-        // ]);
+        $user = User::where('email', $request->email)->first();
+        
+        if (!$user)
+        {
+            return response()->json([
+                'error' => 'User not found '
+            ], 400);
+        }
 
         $wallet = $user->wallet;
-        $wallet->argent = 5000.00;
+        $wallet->argent += floatval($request->argent); 
         $wallet->save();
         return response()->json([
             'wallet' => $wallet
