@@ -42,3 +42,4 @@ Route::post('ajouterArgent',[UserAuthController::class, 'ajouterArgent']);
  // =========================-> TransactionController <-===================================== //
 // ======================================================================================== //
 Route::post('sendArgent',[TransactionController::class, 'sendArgent']);
+Route::get('getDetailsTransaction/{id}',[TransactionController::class, 'getDetailsTransaction']);

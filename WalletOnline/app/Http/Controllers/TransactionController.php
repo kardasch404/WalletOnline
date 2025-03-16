@@ -65,4 +65,21 @@ class TransactionController extends Controller
             ], 500);
         }
     }
+
+    public function getDetailsTransaction($id)
+    {
+
+        try {
+
+            $transaction = Transaction::findOrFail($id);
+            return response()->json([
+                'transaction' => $transaction,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'fialed to get transaction detai',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
 }
