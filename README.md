@@ -22,34 +22,38 @@ This is a RESTful API for an online wallet that allows users to securely exchang
 - **Security:** Hashed passwords, secure transactions
 - **Postman:** postman
 
-## 📚 API Documentation 
-  
+## 📚 API Documentation
+
 ### Authentication 
 
-| Endpoint         | Method | Description          |  Arg                                             |
-|------------------|--------|----------------------|--------------------------------------------------| 
-| `/api/register`  | POST   | Register a new user  |  name,lastname, email, password, role_id, argent |                                                                
-| `/api/login`     | POST   | Authenticate a user  |  email, password                                 |
-| `/api/logout`    | POST   | Logout a user        |                                                  |
-
+| Endpoint         | Method | Description          | Args                                              |
+|------------------|--------|----------------------|---------------------------------------------------| 
+| `/api/register`  | POST   | Register a new user  | `name`, `lastname`, `email`, `password`, `role_id`, `argent` |                                                                
+| `/api/login`     | POST   | Authenticate a user  | `email`, `password`                              |
+| `/api/logout`    | POST   | Logout a user        | None                                              |
 
 ---
+
 ### Wallet Management 
 
-| Endpoint              | Method | Description          |  Arg              |
-|-----------------------|--------|----------------------|-------------------| 
-| `/api/getSolde/{id}`  | GET    | Get user balance     |  id               |                                                                
-| `/api/ajouterArgent`  | POST   | Add money to wallet  |  email, argent    |
+| Endpoint              | Method | Description          | Args             |
+|-----------------------|--------|----------------------|------------------| 
+| `/api/getSolde/{id}`  | GET    | Get user balance     | `id`             |                                                                
+| `/api/ajouterArgent`  | POST   | Add money to wallet  | `email`, `argent`|
+
 ---
+
 ### Transactions 
 
-| Endpoint                           | Method | Description                   |  Arg                                      |
-|------------------------------------|----------------------------------------|-------------------------------------------| 
-| `/api/sendArgent`                  | POST   | Transfer money between users  |  sender (email), recever (email), montant | 
-| `/api/getDetailsTransaction/{id}`  | GET    | Get Details Transaction       |  id                                       |                                                              
+| Endpoint                           | Method | Description                   | Args                                      |
+|------------------------------------|--------|-------------------------------|-------------------------------------------| 
+| `/api/sendArgent`                 | POST   | Transfer money between users   | `sender` (email), `receiver` (email), `montant` | 
+| `/api/getDetailsTransaction/{id}`  | GET    | Get transaction details        | `id`                                       |
+
 ---
 
 ## Models
+
 
 ### User
 Represents a user of the system  
