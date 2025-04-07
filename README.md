@@ -1,4 +1,4 @@
-# OnlineWallet API Documentation
+# WalletOnline API Documentation
 
 This is a RESTful API for an online wallet that allows users to securely exchange money between accounts, with a particular focus on transaction security and protection of personal data.
 
